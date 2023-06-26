@@ -1,2 +1,22 @@
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
+micros:
+  - name: backend
+    src: .
+    engine: nodejs16
+    primary: true
+    commands:
+      - npm run build backend -- --configuration=production
+    include:
+      - dist
+    run: npm run serve backend -- --configuration=production
+    dev: npm run serve backend
+
+  # - name: frontend
+  #   src: .
+  #   engine: static
+  #   primary: false
+  #   commands:
+  #     - npm run build frontend -- --configuration=production
+  #   serve: ./dist/apps/frontend/
+  #   dev: npm run serve frontend -- --port=80
